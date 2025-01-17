@@ -15,6 +15,10 @@ const styles = StyleSheet.create({
         fontSize: 16, 
         lineHeight: 20
     },
+    body: {
+        fontSize: 18, 
+        lineHeight: 24
+    },
     headline: {
         fontSize: 24, 
         lineHeight: 32, 
