@@ -1,5 +1,5 @@
 import { ThemedText } from "@/components/ThemedText";
-import { TextInput, Image, StyleSheet, View, ActivityIndicator, TouchableOpacity } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useThemeColors } from "@/hooks/useThemeColors";
 import { useState } from "react";
@@ -8,7 +8,19 @@ import Home from "@/app/home";
 import VideosPage from "@/app/videos";
 import Playlists from "@/app/playlists";
 
-export default function Index() {
+import { Provider } from "react-redux";
+import store from "@/store/store";
+
+
+export default function App() {
+  return (
+    <Provider store={store}>
+      <Index />
+    </Provider>
+  );
+}
+
+export function Index() {
   const colors = useThemeColors();
   const [activeTab, setActiveTab] = useState("Home");
   const [url, setUrl] = useState("");
