@@ -1,19 +1,18 @@
-import { ThemedText } from "@/components/ThemedText";
-import { StyleSheet, View } from "react-native";
+import React from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
+import { loadVideosFromStorage, updatePlaylistState } from "@/store/playlistsSlice";
+import { ItemListPage } from "@/components/ItemListPage";
 
+export default function PlaylistsPage() {
+  const playlists = useSelector((state: RootState) => state.playlists.items);
 
-export default function Playlists() {
-    return (
-        <View style={styles.tabContent}>
-            <ThemedText variant="headline" color="greyDark">Playlists Page</ThemedText>
-        </View>
-    );
+  return (
+    <ItemListPage
+      data={playlists}
+      loadData={loadVideosFromStorage}
+      updateState={updatePlaylistState}
+    />
+  );
 }
 
-const styles = StyleSheet.create({
-    tabContent: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-    },
-});
