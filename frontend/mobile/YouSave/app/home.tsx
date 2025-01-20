@@ -1,20 +1,15 @@
-import { TextInput, Image, StyleSheet, View, ActivityIndicator, TouchableOpacity, Button } from "react-native";
+import { TextInput, StyleSheet, View, ActivityIndicator, TouchableOpacity } from "react-native";
 import { ThemedText } from "@/components/ThemedText";
 import { useThemeColors } from "@/hooks/useThemeColors";
+import { ThemedTextInput } from "@/components/ThemedTextInput";
 
 import ResetButton from "@/store/reset";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/store/store";
 import { addVideo } from "@/store/videosSlice";
 
+import { Video } from "@/types";
 
-interface Video {
-  id: string;
-  title: string;
-  thumbnail: string;
-  state: "idle" | "downloading" | "downloaded";
-  url: string;
-}
 
 const initialVideos: Video[] = [
   {
@@ -23,6 +18,7 @@ const initialVideos: Video[] = [
     thumbnail: "https://via.placeholder.com/150",
     state: "idle",
     url: "https://www.youtube.com/watch?v=33_zCbUfDog&list=RDGMEMhCgTQvcskbGUxqI4Sn2QYw&index=27",
+    storagePath: "",
   },
   {
     id: "2",
@@ -31,6 +27,7 @@ const initialVideos: Video[] = [
     thumbnail: "https://via.placeholder.com/150",
     state: "idle",
     url: "https://www.youtube.com/watch?v=OIBODIPC_8Y&list=RD2eOg5DoYuwU&index=32",
+    storagePath: "",
   },
 ];
 
@@ -64,20 +61,12 @@ export default function Home({ url, setUrl, loading, setLoading }: HomeProps) {
 
     return (
         <View style={styles.inputContainer}>
-            <TextInput
-              style={[
-                styles.input,
-                {
-                  backgroundColor: colors.greyLight,
-                  color: colors.greyDark,
-                },
-              ]}
-              placeholder="Enter video or playlist URL"
-              placeholderTextColor={colors.greyMedium}
-              value={url}
-              onChangeText={(text) => setUrl(text)}
-              autoCapitalize="none"
-              keyboardType="url"
+            <ThemedTextInput 
+                placeholder="Enter video or playlist URL"
+                value={url}
+                onChangeText={(text: string) => setUrl(text)}
+                autoCapitalize="none"
+                keyboardType="url"
             />
 
             <TouchableOpacity
