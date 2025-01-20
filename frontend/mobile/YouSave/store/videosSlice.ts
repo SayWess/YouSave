@@ -1,13 +1,7 @@
 import { createListSlice } from "@/store/listSliceFactory";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { STORAGE_KEY_VIDEOS } from "@/constants/StorageKeys";
-
-export interface Video {
-  id: string;
-  title: string;
-  thumbnail: string;
-  state: "idle" | "downloading" | "downloaded";
-}
+import { Video } from "@/types/item";
 
 const videosSlice = createListSlice<Video>({
   name: "videos",

@@ -1,17 +1,17 @@
 import { createSlice, Draft, PayloadAction } from "@reduxjs/toolkit";
 
-interface ListItem {
+interface Item {
   id: string;
   title: string;
   thumbnail: string;
   state: "idle" | "downloading" | "downloaded";
 }
 
-interface ListState<T extends ListItem> {
+interface ListState<T extends Item> {
   items: T[];
 }
 
-export function createListSlice<T extends ListItem>({
+export function createListSlice<T extends Item>({
   name,
   initialItems = [],
 }: {

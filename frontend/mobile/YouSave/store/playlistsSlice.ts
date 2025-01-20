@@ -1,14 +1,7 @@
 import { createListSlice } from "@/store/listSliceFactory";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { STORAGE_KEY_PLAYLISTS } from "@/constants/StorageKeys";
-
-
-export interface Playlist {
-  id: string;
-  title: string;
-  thumbnail: string;
-  state: "idle" | "downloading" | "downloaded";
-}
+import { Playlist } from "@/types/item";
 
 const playlistsSlice = createListSlice<Playlist>({
   name: "playlists",
