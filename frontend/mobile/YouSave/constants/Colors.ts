@@ -8,6 +8,7 @@ export const Colors = {
       white: '#FFFFFF',
       accent: '#FF4500', // Bright orange for call-to-action buttons or highlights
       backgroundSecondary: '#F5F5F5', // Slightly darker than greyBackground for contrast
+      red: '#FF0000',
     },
     dark: {
       tint: '#4682B4', // Muted blue for primary elements in dark mode
@@ -18,6 +19,7 @@ export const Colors = {
       white: '#000000',
       accent: '#FF6347', // Warm red for call-to-action buttons or highlights
       backgroundSecondary: '#242424', // Slightly lighter than greyBackground for contrast
+      red: '#FF0000',
     },
   
   };
