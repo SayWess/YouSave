@@ -20,8 +20,11 @@ export const ItemListPage: React.FC<ItemListPageProps> = ({
 
   // Fetch data when the component mounts
   useEffect(() => {
-    dispatch(loadData());
-  }, [dispatch]);
+    if (data.length === 0) {
+      // Load data if it's not already loaded
+      dispatch(loadData());
+    }
+  }, []);
 
   const handleAction = (id: string) => {
     // Trigger the update state action
