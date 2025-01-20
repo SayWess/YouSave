@@ -8,19 +8,7 @@ import Home from "@/app/home";
 import VideosPage from "@/app/videos";
 import Playlists from "@/app/playlists";
 
-import { Provider } from "react-redux";
-import store from "@/store/store";
-
-
-export default function App() {
-  return (
-    <Provider store={store}>
-      <Index />
-    </Provider>
-  );
-}
-
-export function Index() {
+export default function Index() {
   const colors = useThemeColors();
   const [activeTab, setActiveTab] = useState("Home");
   const [url, setUrl] = useState("");
