@@ -31,6 +31,9 @@ export function createListSlice<T extends Item>({
         state.items = action.payload as Draft<T>[]; // Explicitly cast if needed
       },
       addItem(state, action: PayloadAction<T>) {
+        if (state.items.find((item) => item.id === action.payload.id)) {
+          return;
+        }
         state.items.push(action.payload as Draft<T>); // Explicitly cast if needed
       },
       updateItemState(
